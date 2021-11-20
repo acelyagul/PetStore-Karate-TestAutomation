@@ -18,11 +18,14 @@ Feature: Task 1-2-3
         |pending |
 
 
+  Scenario: Task2
+    And def getUserInformations = call read('classpath:helpers/helper.feature@name=createUserInformations')
+    And print getUserInformations.userMail
 
   Scenario: Verify created User
     And path "user"
     And header Content-Type = 'application/json'
-    And def getUserInformations = call read('classpath:helpers/helper.feature@name=createEmail')
+    And def getUserInformations = call read('classpath:helpers/helper.feature@name=createUserInformations')
     * def requestBody =
       """ {
           "id": #(getUserInformations.userId),
@@ -45,7 +48,7 @@ Feature: Task 1-2-3
   Scenario: Verify Created User and Call Parameters from Another Feature
     And path "user"
     And header Content-Type = 'application/json'
-    And def getUserInformations = call read('classpath:helpers/helper.feature@name=createEmail')
+    And def getUserInformations = call read('classpath:helpers/helper.feature@name=createUserInformations')
     * def requestBody =
       """ {
           "id": #(getUserInformations.userId),
