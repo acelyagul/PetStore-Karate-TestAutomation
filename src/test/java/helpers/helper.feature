@@ -3,8 +3,8 @@ Feature: my helper features
   Background:
     * url baseUrl
 
-  @name=createEmail
-  Scenario: create mail
+  @name=createUserInformations
+  Scenario: Create User Informations
     * def fakerObj =  new faker()
     * def userId = fakerObj.number().digit()
     * def userName = fakerObj.name().username()
